@@ -12,6 +12,7 @@ const Task = ({ task, onDelete, onToggle }) => {
         {task.text}
         <FaTimes
           style={{ color: 'red', cursor: 'pointer' }}
+          // Could have been onClick={onDelete}, but because we have to pass a parameter, if we write onClick={onDelete(task.id)}, the function would have been called immediately
           onClick={() => onDelete(task.id)}
         />
       </h3>
