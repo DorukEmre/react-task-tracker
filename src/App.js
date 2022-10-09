@@ -1,32 +1,30 @@
 import Header from './components/Header'
 import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+// useEffect deals with side effects- if we want something to happen when the page loads
 
 function App() {
   // Don't show form by default
   const [showAddTask, setShowAddTask] = useState(false)
+  const [tasks, setTasks] = useState([])
 
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      text: 'Doctors Appointment',
-      day: 'Feb 5th at 2:30pm',
-      reminder: true,
-    },
-    {
-      id: 2,
-      text: 'Meeting at School',
-      day: 'Feb 6th at 1:30pm',
-      reminder: true,
-    },
-    {
-      id: 3,
-      text: 'Food Shopping',
-      day: 'Feb 5th at 1:30pm',
-      reminder: false,
-    },
-  ])
+  useEffect(() => {
+    const getTasks = async () => {
+      const tasksFromServer = await fetchTasks()
+      setTasks(tasksFromServer)
+    }
+
+    getTasks()
+  }, []) // pass (empty) array for dependency array (see React.DependencyList). If we have a value where we want useEffect to run and that value changes we would pass it in here, like 'user'
+
+  // Fetch Tasks
+  const fetchTasks = async () => {
+    const res = await fetch('http://localhost:5000/tasks')
+    const data = await res.json()
+
+    return data
+  }
 
   // Add Task
   const addTask = (task) => {

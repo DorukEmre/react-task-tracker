@@ -12,6 +12,18 @@ const Tasks = ({ tasks, onDelete, onToggle }) => {
         />
       ))}
     </>
+
+    // If Warning: Each child in a list should have a unique "key" prop:
+    // <>
+    //   {tasks.map((task, index) => (
+    //     <Task
+    //       key={index}
+    //       task={task}
+    //       onDelete={onDelete}
+    //       onToggle={onToggle}
+    //     />
+    //   ))}
+    // </>
   )
 }
 
