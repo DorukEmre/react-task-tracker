@@ -3,14 +3,14 @@ import PropTypes from 'prop-types'
 const PassProp = (props) => {
   return (
     <>
-      <h2 style={{ color: 'red', backgroundColor: 'blue'}}>{props.title}</h2>
-      <h3 style={ h3Style }>{props.key}</h3>
+      <h2 style={{ color: 'red', backgroundColor: 'blue' }}>{props.title}</h2>
+      <h3 style={h3Style}>{props.key}</h3>
     </>
   )
 }
 
 PassProp.defaultProps = {
-  key: 'value'
+  key: 'value',
 }
 
 // Will alert in console if prop is not of correct type
@@ -20,9 +20,9 @@ PassProp.propTypes = {
 }
 
 // CSS in JS
-const h3Style = { 
-  color: 'blue', 
-  backgroundColor: 'red'
+const h3Style = {
+  color: 'blue',
+  backgroundColor: 'red',
 }
 
 export default PassProp

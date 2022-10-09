@@ -1,14 +1,23 @@
-import Button from "./Button"
+import Button from './Button'
 
-const Header = () => {
+const Header = ({ title, onAdd, showAdd }) => {
+  // const onClick = (event) => {
+  //   console.log(event.type, 'at', event.pageX, event.pageY)
+  // }
   return (
     <header className="header">
-      <h1>Task tracker</h1>
-      <Button color='green' text='Add' />
-      <Button color='blue' text='This is a blue button' />
-      <Button text='Default color' />
+      <h1>{title}</h1>
+      <Button
+        color={showAdd ? 'red' : 'green'}
+        text={showAdd ? 'Close' : 'Add'}
+        onClick={onAdd}
+      />
     </header>
   )
+}
+
+Header.defaultProps = {
+  title: 'Task Tracker',
 }
 
 export default Header

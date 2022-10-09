@@ -1,11 +1,9 @@
 const Destruct = ({ title }) => {
-  return (
-    <p>{title}</p>
-  )
+  return <p>{title}</p>
 }
 
 Destruct.defaultProps = {
-  title: 'Destructured title'
+  title: 'Destructured title',
 }
 
 export default Destruct
