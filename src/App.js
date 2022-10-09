@@ -5,13 +5,14 @@ import Footer from './components/Footer'
 import About from './components/About'
 import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
-// useEffect deals with side effects- if we want something to happen when the page loads
+import TaskDetails from './components/TaskDetails'
 
 function App() {
   // Don't show form by default
   const [showAddTask, setShowAddTask] = useState(false)
   const [tasks, setTasks] = useState([])
 
+  // useEffect deals with side effects - tells React that the component needs to do something after render
   useEffect(() => {
     const getTasks = async () => {
       const tasksFromServer = await fetchTasks()
@@ -116,6 +117,7 @@ function App() {
             }
           />
           <Route path="/about" element={<About />} />
+          <Route path="/task/:id" element={<TaskDetails />} />
         </Routes>
         <Footer />
       </div>
